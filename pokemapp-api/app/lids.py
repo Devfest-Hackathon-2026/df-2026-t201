@@ -2,6 +2,7 @@
 
 import json
 import math
+from functools import lru_cache
 from pathlib import Path
 
 from pydantic import BaseModel
@@ -58,3 +59,9 @@ def parse_pokefuta_ndjson(text: str) -> list[PokeLid]:
 def load_lids(path: Path = DEFAULT_DATA_PATH) -> list[PokeLid]:
     data = json.loads(path.read_text(encoding="utf-8"))
     return [PokeLid.model_validate(item) for item in data]
+
+
+@lru_cache
+def get_lids() -> list[PokeLid]:
+    """FastAPI dependency: the lid snapshot, loaded once per process."""
+    return load_lids()
