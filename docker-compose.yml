@@ -1,13 +1,13 @@
 services:
   api:
-    build: ./pokemapp-api
+    build: ./futatabi-api
     restart: unless-stopped
     ports:
       - "8080:8080"
     env_file:
-      - path: ./pokemapp-api/.env
+      - path: ./futatabi-api/.env
         required: false
     volumes:
-      - ./pokemapp-api/app:/srv/app
-      - ./pokemapp-api/data:/srv/data
+      - ./futatabi-api/app:/srv/app
+      - ./futatabi-api/data:/srv/data
     command: uvicorn app.main:app --host 0.0.0.0 --port 8080 --reload

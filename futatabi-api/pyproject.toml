@@ -1,7 +1,7 @@
 [project]
-name = "pokemapp-api"
+name = "futatabi-api"
 version = "0.1.0"
-description = "Pokémapp backend: route-aware Poké Lid detour recommendations"
+description = "FutaTabi (蓋旅) backend: plan design-manhole hunts with nearby spots"
 requires-python = ">=3.12"
 dependencies = [
     "fastapi>=0.162.0",
