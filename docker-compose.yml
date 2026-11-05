@@ -1,0 +1,11 @@
+services:
+  api:
+    build: ./pokemapp-api
+    ports:
+      - "8080:8080"
+    env_file:
+      - path: ./pokemapp-api/.env
+        required: false
+    volumes:
+      - ./pokemapp-api/app:/srv/app
+    command: uvicorn app.main:app --host 0.0.0.0 --port 8080 --reload
